@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Recipes\" />
     <Folder Include="Recipes\Rules\" />
   </ItemGroup>
 
