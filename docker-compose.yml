@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  recipesapi.api:
+    image: ${DOCKER_REGISTRY-}recipesapiapi
+    build:
+      context: .
+      dockerfile: src/RecipesAPI.API/Dockerfile
+    networks:
+      - backend
+  recipes-elastic-search:
+    container_name: elastic-search
+    image: elasticsearch:7.10.1
+    environment:
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    labels:
+      com.example.service: "es"
+      com.example.description: "For searching and indexing data"
+    volumes:
+      - type: volume
+        source: esdata
+        target: /usr/share/elasticsearch/data/
+    ports:
+      - "9200:9200"
+    networks:
+      - backend
+networks:
+  backend:
+    driver: bridge
+volumes:
+ esdata: {}
