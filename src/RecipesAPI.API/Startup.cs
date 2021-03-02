@@ -34,7 +34,7 @@ namespace RecipesAPI.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RecipesAPI.API", Version = "v1" });
             });
-            services.AddInfrastructure();
+            services.AddInfrastructure(Configuration);
             services.AddApplication();
         }
 

@@ -6,11 +6,19 @@
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Configuration\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RecipesAPI.Domain\RecipesAPI.Domain.csproj" />
+    <ProjectReference Include="..\RecipesAPI.Infrastructure\RecipesAPI.Infrastructure.csproj" />
+    <ProjectReference Include="..\RecipesAPI.Test\RecipesAPI.Test.csproj" />
   </ItemGroup>
 
 </Project>
