@@ -6,11 +6,9 @@ namespace RecipesAPI.Application
 {
     public static class ApplicationDependencies
     {
-        public static IServiceCollection AddApplication(this IServiceCollection services)
+        public static void AddApplication(this IServiceCollection services)
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
-
-            return services;
         }
     }
 }

@@ -2,13 +2,14 @@
 using Microsoft.Extensions.DependencyInjection;
 using Nest;
 using System;
+using RecipesAPI.Domain.Recipes;
 
 namespace RecipesAPI.Infrastructure
 {
-    public static void AddElasticsearch(this IServiceCollection services, IConfiguration configuration)
+    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         var url = "http://elastic-search:9200/";
-        var defaultIndex = "";
+        var defaultIndex = "Recipes";
 
         var settings = new ConnectionSettings(new Uri(url))
             .DefaultIndex(defaultIndex);
@@ -24,13 +25,12 @@ namespace RecipesAPI.Infrastructure
     private static void AddDefaultMappings(ConnectionSettings settings)
     {
         settings.
-            DefaultMappingFor<>(m => m
-        );
+            DefaultMappingFor<Recipe>(m => m);
     }
     private static void CreateIndex(IElasticClient client, string indexName)
     {
         var createIndexResponse = client.Indices.Create(indexName,
-            index => index.Map<>(x => x.AutoMap())
+            index => index.Map<Recipe>(x => x.AutoMap())
         );
     }
 }

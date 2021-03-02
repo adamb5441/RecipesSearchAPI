@@ -9,13 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="9.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Recipes\" />
-    <Folder Include="Search\" />
+    <ProjectReference Include="..\RecipesAPI.Application\RecipesAPI.Application.csproj" />
+    <ProjectReference Include="..\RecipesAPI.Domain\RecipesAPI.Domain.csproj" />
+    <ProjectReference Include="..\RecipesAPI.Infrastructure\RecipesAPI.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

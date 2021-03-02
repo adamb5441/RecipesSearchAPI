@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace RecipesAPI.Domain.Recipes
 {
-    class Recipe
+    public class Recipe
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

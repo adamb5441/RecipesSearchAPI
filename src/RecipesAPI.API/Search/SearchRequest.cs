@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipesAPI.Domain.Recipes
+namespace RecipesAPI.API.Search
 {
-    public interface IRecipeRepository
+    public class SearchRequest
     {
     }
 }
