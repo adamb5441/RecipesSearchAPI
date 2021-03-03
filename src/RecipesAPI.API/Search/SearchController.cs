@@ -12,11 +12,6 @@ namespace RecipesAPI.API.Search
 
     public class SearchController : BaseAPIController
     {
-        private readonly IMediator _mediator;
 
-        public SearchController(IMediator mediator)
-        {
-            this._mediator = mediator;
-        }
     }
 }

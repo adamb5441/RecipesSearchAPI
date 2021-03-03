@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Configuration\Commands\" />
     <Folder Include="Reviews\" />
     <Folder Include="Searches\" />
     <Folder Include="Recipes\RemoveRecipe\" />

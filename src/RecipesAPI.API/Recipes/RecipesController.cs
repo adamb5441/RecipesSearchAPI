@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RecipesAPI.Application.Recipes;
-using RecipesAPI.API.SeedWork;
 
 namespace RecipesAPI.API.Recipes
 {
@@ -16,6 +15,7 @@ namespace RecipesAPI.API.Recipes
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRecipe(int id)
         {
+            var recipe = await _mediator.Send(new AddRecipeCommand());
             return Ok();
         }
         [HttpPut("{id}")]

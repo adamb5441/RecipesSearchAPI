@@ -7,13 +7,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace RecipesAPI.API.SeedWork
+namespace RecipesAPI.API
 {
     [Route("api/[controller]")]
     [ApiController]
     public class BaseAPIController : ControllerBase
     {
-        private IMediator _mediator;
+        protected IMediator _mediator;
 
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>();
     }

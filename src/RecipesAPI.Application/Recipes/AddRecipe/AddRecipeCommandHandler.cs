@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipesAPI.Application.Recipes.AddRecipe
+namespace RecipesAPI.Application.Recipes
 {
     class AddRecipeCommandHandler
     {

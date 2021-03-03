@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipesAPI.Application.Recipes
+namespace RecipesAPI.Domain.Recipes
 {
-    public class AddRecipeCommand
+    public class Ingredient
     {
+        public string Name { get; set; }
     }
 }
