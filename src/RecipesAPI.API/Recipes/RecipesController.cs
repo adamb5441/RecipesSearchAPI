@@ -17,23 +17,24 @@ namespace RecipesAPI.API.Recipes
         {
             return Ok();
         }
-        [HttpPut("{id}")]
+        [HttpPut("Update/{id}")]
         public async Task<IActionResult> UpdateRecipe(int id, [FromBody] RecipeDto Recipe)
         {
                 return Ok();
         }
+        [HttpPost]
         public async Task<IActionResult> CreateRecipe([FromBody] CreateRecipeRequest request)
         {
             var recipe = await _mediator.Send(new AddRecipeCommand(request.Name, request.Directions, request.Ingredients));
             return Ok();
         }
         //maybe?
-        [HttpPost("{id}")]
-        public async Task<IActionResult> ImportRecipes(int id, [FromBody] List<RecipeDto> Recipe)
+        [HttpPost("Import")]
+        public async Task<IActionResult> ImportRecipes([FromBody] List<RecipeDto> Recipe)
         {
             return Ok();
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> DeleteRecipe(int id)
         {
                 return Ok();
