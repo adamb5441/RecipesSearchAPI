@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Nest;
 using System;
 using RecipesAPI.Domain.Recipes;
+using RecipesAPI.Infrastructure.Recipes;
 
 namespace RecipesAPI.Infrastructure
 {
@@ -23,8 +24,10 @@ namespace RecipesAPI.Infrastructure
 
             services.AddSingleton<IElasticClient>(client);
 
-            client.Indices.Create(defaultIndex, index => index.Map<Recipe>(x => x.AutoMap())
-            );
+            client.Indices.Create(defaultIndex, index => index.Map<Recipe>(x => x.AutoMap()));
+
+            services.AddTransient<IRecipeRepository, RecipeRepository>();
+
         }
     }
 }
