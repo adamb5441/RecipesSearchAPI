@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using RecipesAPI.API.SeedWork;
+using RecipesAPI.API;
 using System;
 using System.Collections.Generic;
 using System.Linq;

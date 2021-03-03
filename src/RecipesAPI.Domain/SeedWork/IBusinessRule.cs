@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipesAPI.Application.Recipes
+namespace RecipesAPI.Domain.SeedWork
 {
-    class AddRecipeRequest
+    class IBusinessRule
     {
     }
 }

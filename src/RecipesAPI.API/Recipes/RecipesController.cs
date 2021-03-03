@@ -13,9 +13,8 @@ namespace RecipesAPI.API.Recipes
     {
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetRecipe(int id)
+        public async Task<IActionResult> GetRecipe( [FromBody]CreateRecipeRequest request)
         {
-            var recipe = await _mediator.Send(new AddRecipeCommand());
             return Ok();
         }
         [HttpPut("{id}")]
@@ -23,9 +22,9 @@ namespace RecipesAPI.API.Recipes
         {
                 return Ok();
         }
-        [HttpPost("{id}")]
-        public async Task<IActionResult> CreateRecipe(int id, [FromBody] RecipeDto Recipe)
+        public async Task<IActionResult> CreateRecipe([FromBody] CreateRecipeRequest request)
         {
+            var recipe = await _mediator.Send(new AddRecipeCommand(request.Name, request.Directions, request.Ingredients));
             return Ok();
         }
         //maybe?

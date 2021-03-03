@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecipesAPI.Domain.SeedWork
 {
-    public abstract class Entity<TId>
+    class ValueObject
     {
-        public TId Id { get; protected set; }
     }
 }

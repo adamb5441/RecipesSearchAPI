@@ -8,5 +8,12 @@ namespace RecipesAPI.Domain.Recipes
 {
     public interface IRecipeRepository
     {
+        Task SaveSingleAsync(Recipe Recipe);
+
+        Task<Recipe> GetRecipeById(Guid id);
+
+        Task DeleteAsync(Recipe Recipe);
+
+        Task SaveBulkAsync(Recipe[] Recipes);
     }
 }

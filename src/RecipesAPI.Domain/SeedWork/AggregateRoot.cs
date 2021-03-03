@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecipesAPI.Domain.SeedWork
 {
-    class AggregateRoot
+    public interface IAggregateRoot
     {
     }
 }

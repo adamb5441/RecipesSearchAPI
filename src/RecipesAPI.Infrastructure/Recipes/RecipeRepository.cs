@@ -1,7 +1,5 @@
 ﻿using RecipesAPI.Domain.Recipes;
-using Microsoft.AspNetCore.Mvc;
 using Nest;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,21 +17,21 @@ namespace RecipesAPI.Infrastructure.Recipes
             _elasticClient = elasticClient;
         }
 
-        public async virtual Task<Recipe[]> SearchRecipesPage(string query, int page, int pageSize)
-        {
-            var response = await _elasticClient.SearchAsync<Recipe>(s =>
-                s.Query(q => q.QueryString(d => d.Query('*' + query + '*')))
-                .From((page - 1) * pageSize)
-                .Size(pageSize));
-            if (!response.IsValid)
-            {
-                return new Recipe[] { };
-            }
+        //public async virtual Task<Recipe[]> SearchRecipesPage(string query, int page, int pageSize)
+        //{
+        //    var response = await _elasticClient.SearchAsync<Recipe>(s =>
+        //        s.Query(q => q.QueryString(d => d.Query('*' + query + '*')))
+        //        .From((page - 1) * pageSize)
+        //        .Size(pageSize));
+        //    if (!response.IsValid)
+        //    {
+        //        return new Recipe[] { };
+        //    }
 
-            return response.Documents.ToArray();
-        }
+        //    return response.Documents.ToArray();
+        //}
 
-        public async virtual Task<Recipe> GetRecipeById(int id)
+        public async virtual Task<Recipe> GetRecipeById(Guid id)
         {
             var response = await _elasticClient.GetAsync<Recipe>(id, idx => idx.Index("Recipes"));
             return response.Source;

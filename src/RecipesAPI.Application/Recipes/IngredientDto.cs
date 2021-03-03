@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipesAPI.Domain.Recipes
+namespace RecipesAPI.Application.Recipes
 {
-    public class Ingredient
+    public class IngredientDto
     {
         public string Name { get; set; }
 
