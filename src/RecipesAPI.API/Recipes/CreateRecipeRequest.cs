@@ -1,4 +1,5 @@
 ﻿using RecipesAPI.Application.Recipes;
+using RecipesAPI.Domain.Recipes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,6 @@ namespace RecipesAPI.API.Recipes
 
         public string Directions { get; set; }
 
-        public List<IngredientDto> Ingredients { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
     }
 }

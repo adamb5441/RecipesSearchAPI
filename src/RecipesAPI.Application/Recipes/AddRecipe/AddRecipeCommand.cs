@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MediatR;
 using RecipesAPI.Application.Configuration.Commands;
+using RecipesAPI.Domain.Recipes;
 
 namespace RecipesAPI.Application.Recipes
 {
@@ -12,13 +13,13 @@ namespace RecipesAPI.Application.Recipes
     {
         public string Name { get; set; }
         public string Directions { get; set; }
-        public List<IngredientDto> Ingredients { get; set; }
+        public List<Ingredient> Ingredients { get; set; }
 
         public AddRecipeCommand
         (
             string name,
             string directions,
-            List<IngredientDto> ingredients
+            List<Ingredient> ingredients
         )
         {
             this.Name = name;

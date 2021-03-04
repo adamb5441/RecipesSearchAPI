@@ -12,7 +12,7 @@ namespace RecipesAPI.Infrastructure
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             var url = "http://elastic-search:9200/";
-            var defaultIndex = "Recipes";
+            var defaultIndex = "recipes";
 
             var settings = new ConnectionSettings(new Uri(url))
                 .DefaultIndex(defaultIndex);

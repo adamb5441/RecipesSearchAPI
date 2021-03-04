@@ -17,9 +17,17 @@ namespace RecipesAPI.Domain.Recipes
 
         public List<Ingredient> Ingredients { get; set; }
 
-        public static Recipe CreateRecipe()
+        public Recipe
+        (
+            string name,
+            string directions,
+            List<Ingredient> ingredients
+)
         {
-            return new Recipe();
+            this.Id = Guid.NewGuid();
+            this.Name = name;
+            this.Directions = directions;
+            this.Ingredients = ingredients;
         }
     }
 }

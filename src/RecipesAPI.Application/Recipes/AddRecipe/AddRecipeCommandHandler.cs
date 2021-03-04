@@ -20,7 +20,7 @@ namespace RecipesAPI.Application.Recipes
 
         public async Task<Guid> Handle(AddRecipeCommand command, CancellationToken cancellationToken)
         {
-            var recipe = Recipe.CreateRecipe();
+            var recipe = new Recipe(command.Name, command.Directions, command.Ingredients);
 
             await _recipeRepository.SaveSingleAsync(recipe);
 

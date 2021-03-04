@@ -46,7 +46,8 @@ namespace RecipesAPI.Infrastructure.Recipes
         public async Task SaveSingleAsync(Recipe Recipe)
         {
 
-            await _elasticClient.IndexDocumentAsync<Recipe>(Recipe);
+            var response = await _elasticClient.IndexDocumentAsync<Recipe>(Recipe);
+            Console.WriteLine("Done");
         }
 
         public async Task SaveBulkAsync(Recipe[] Recipes)
