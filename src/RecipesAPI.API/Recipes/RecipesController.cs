@@ -9,23 +9,32 @@ using RecipesAPI.Application.Recipes;
 
 namespace RecipesAPI.API.Recipes
 {
-    public class RecipesController : BaseAPIController
+    [Route("api/[controller]")]
+    [ApiController]
+    public class RecipesController : ControllerBase
     {
+        private readonly IMediator _mediator;
+
+        public RecipesController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetRecipe( [FromBody]CreateRecipeRequest request)
+        public async Task<IActionResult> GetRecipe(Guid id)
         {
             return Ok();
         }
         [HttpPut("Update/{id}")]
-        public async Task<IActionResult> UpdateRecipe(int id, [FromBody] RecipeDto Recipe)
+        public async Task<IActionResult> UpdateRecipe(Guid id, [FromBody] RecipeDto Recipe)
         {
                 return Ok();
         }
         [HttpPost]
         public async Task<IActionResult> CreateRecipe([FromBody] CreateRecipeRequest request)
         {
-            var recipe = await _mediator.Send(new AddRecipeCommand(request.Name, request.Directions, request.Ingredients));
+            var command = new AddRecipeCommand(request.Name, request.Directions, request.Ingredients);
+            var recipe = await _mediator.Send(command);
             return Ok();
         }
         //maybe?
@@ -35,7 +44,7 @@ namespace RecipesAPI.API.Recipes
             return Ok();
         }
         [HttpDelete("Delete/{id}")]
-        public async Task<IActionResult> DeleteRecipe(int id)
+        public async Task<IActionResult> DeleteRecipe(Guid id)
         {
                 return Ok();
         }
