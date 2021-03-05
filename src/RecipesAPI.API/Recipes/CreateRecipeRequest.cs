@@ -13,6 +13,6 @@ namespace RecipesAPI.API.Recipes
 
         public string Directions { get; set; }
 
-        public List<Ingredient> Ingredients { get; set; }
+        public List<IngredientDto> Ingredients { get; set; }
     }
 }

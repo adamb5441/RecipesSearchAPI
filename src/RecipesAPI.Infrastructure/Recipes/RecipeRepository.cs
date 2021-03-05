@@ -33,7 +33,7 @@ namespace RecipesAPI.Infrastructure.Recipes
 
         public async virtual Task<Recipe> GetRecipeById(Guid id)
         {
-            var response = await _elasticClient.GetAsync<Recipe>(id, idx => idx.Index("Recipes"));
+            var response = await _elasticClient.GetAsync<Recipe>(id, idx => idx.Index("recipes"));
             return response.Source;
         }
 

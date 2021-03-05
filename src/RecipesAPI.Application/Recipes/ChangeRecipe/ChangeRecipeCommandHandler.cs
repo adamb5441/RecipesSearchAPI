@@ -9,27 +9,28 @@ using RecipesAPI.Domain.Recipes;
 
 namespace RecipesAPI.Application.Recipes
 {
-    public class AddRecipeCommandHandler : IRequestHandler<AddRecipeCommand, Guid>
+    public class ChangeRecipeCommandHandler : IRequestHandler<ChangeRecipeCommand, bool>
     {
         private readonly IRecipeRepository _recipeRepository;
 
-        public AddRecipeCommandHandler(IRecipeRepository recipeRepository)
+        public ChangeRecipeCommandHandler(IRecipeRepository recipeRepository)
         {
             _recipeRepository = recipeRepository;
         }
 
-        public async Task<Guid> Handle(AddRecipeCommand command, CancellationToken cancellationToken)
+        public async Task<bool> Handle(ChangeRecipeCommand command, CancellationToken cancellationToken)
         {
-            var ingredients = command
+            var recipe = await _recipeRepository.GetRecipeById(command.Id);
+            recipe.Name = command.Name;
+            recipe.Directions = command.Directions;
+            recipe.Ingredients = command
                 .Ingredients
                 .Select(i => new Ingredient(i.Name, i.Quantity, i.Measurement))
                 .ToList();
 
-            var recipe = new Recipe(command.Name, command.Directions, ingredients);
-
             await _recipeRepository.SaveSingleAsync(recipe);
 
-            return recipe.Id;
+            return true;
         }
     }
 }

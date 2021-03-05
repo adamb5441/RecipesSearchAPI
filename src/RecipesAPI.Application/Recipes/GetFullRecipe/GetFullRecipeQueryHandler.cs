@@ -17,9 +17,18 @@ namespace RecipesAPI.Application.Recipes.GetFullRecipe
             _recipeRepository = recipeRepository;
         }
 
-        public async Task<RecipeDto> Handle(GetFullRecipeQuery Query, CancellationToken cancellationToken)
+        public async Task<RecipeDto> Handle(GetFullRecipeQuery query, CancellationToken cancellationToken)
         {
-            return new RecipeDto();
+            var response = await _recipeRepository.GetRecipeById(query.RecipeId);
+
+            var ingredients = response
+                .Ingredients
+                .Select(i => new IngredientDto(i.Name, i.Quantity, i.Measurement))
+                .ToList();
+
+            var recipe = new RecipeDto(response.Id, response.Name, response.Directions, ingredients);
+
+            return recipe;
         }
     }
 }

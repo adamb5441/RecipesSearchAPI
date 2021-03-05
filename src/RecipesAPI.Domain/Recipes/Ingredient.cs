@@ -13,5 +13,18 @@ namespace RecipesAPI.Domain.Recipes
         public double Quantity { get; set; }
 
         public string Measurement { get; set; }
+
+        public Ingredient
+        (
+            string name,
+            double quantity,
+            string measurement
+        )
+        {
+            this.Name = name;
+            this.Quantity = quantity;
+            this.Measurement = measurement;
+        }
     }
+
 }
