@@ -9,7 +9,7 @@ using RecipesAPI.Domain.Recipes;
 
 namespace RecipesAPI.Application.Recipes.RemoveRecipe
 {
-    class RemoveRecipeCommandHandler
+    class RemoveRecipeCommandHandler : IRequestHandler<RemoveRecipeCommand, bool>
     {
         private readonly IRecipeRepository _recipeRepository;
 
@@ -17,9 +17,9 @@ namespace RecipesAPI.Application.Recipes.RemoveRecipe
         {
             _recipeRepository = recipeRepository;
         }
-        public async Task<bool> Handle(ChangeRecipeCommand command, CancellationToken cancellationToken)
+        public async Task<bool> Handle(RemoveRecipeCommand command, CancellationToken cancellationToken)
         {
-            var recipe = await _recipeRepository.GetRecipeById(command.Id);
+            var recipe = await _recipeRepository.GetRecipeById(command.RecipeId);
 
             await _recipeRepository.DeleteAsync(recipe);
 

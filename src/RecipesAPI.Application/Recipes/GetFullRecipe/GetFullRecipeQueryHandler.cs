@@ -1,4 +1,5 @@
-﻿using RecipesAPI.Domain.Recipes;
+﻿using RecipesAPI.Application.Configuration.Queries;
+using RecipesAPI.Domain.Recipes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace RecipesAPI.Application.Recipes.GetFullRecipe
 {
-    class GetFullRecipeQueryHandler
+    class GetFullRecipeQueryHandler : IQueryHandler<GetFullRecipeQuery, RecipeDto>
     {
         private readonly IRecipeRepository _recipeRepository;
 
