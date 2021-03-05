@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecipesAPI.Domain.SeedWork
+namespace RecipesAPI.Domain.Recipes.Search
 {
-    public abstract class Entity
+    class RecipeData
     {
     }
 }
