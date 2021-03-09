@@ -8,6 +8,7 @@ services:
       dockerfile: src/RecipesAPI.API/Dockerfile
     networks:
       - backend
+      - frontend
   recipes-elastic-search:
     container_name: elastic-search
     image: elasticsearch:7.10.1
@@ -40,6 +41,8 @@ services:
       - backend
 networks:
   backend:
+    driver: bridge
+  frontend:
     driver: bridge
 volumes:
  recipesdata: {}
