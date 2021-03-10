@@ -4,6 +4,7 @@ using Nest;
 using System;
 using RecipesAPI.Domain.Recipes;
 using RecipesAPI.Infrastructure.Recipes;
+using RecipesAPI.Domain.Recipes.Search;
 
 namespace RecipesAPI.Infrastructure
 {
@@ -18,7 +19,9 @@ namespace RecipesAPI.Infrastructure
                 .DefaultIndex(defaultIndex);
 
 
-            settings.DefaultMappingFor<Recipe>(m => m);
+            settings.DefaultMappingFor<Recipe>(m => m
+                .Ignore(p => p.Yield)
+            );
 
             var client = new ElasticClient(settings);
 
@@ -27,6 +30,7 @@ namespace RecipesAPI.Infrastructure
             client.Indices.Create(defaultIndex, index => index.Map<Recipe>(x => x.AutoMap()));
 
             services.AddTransient<IRecipeRepository, RecipeRepository>();
+            services.AddTransient<ISearchRepository, SearchRepository>();
 
         }
     }

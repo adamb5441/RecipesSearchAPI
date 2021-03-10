@@ -25,7 +25,7 @@ namespace RecipesAPI.Application.Recipes
                 .Select(i => new Ingredient(i.Name, i.Quantity, i.Measurement))
                 .ToList();
 
-            var recipe = new Recipe(command.Name, command.Directions, ingredients);
+            var recipe = new Recipe(command.Name, command.Directions, ingredients, command.Description, command.Yield);
 
             await _recipeRepository.SaveSingleAsync(recipe);
 

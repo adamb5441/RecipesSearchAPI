@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RecipesAPI.Domain.Recipes.Search
 {
-    public class RecipeData
+    public interface ISearchRepository
     {
+        Task<Recipe[]> SearchProductsPage(string query, int page, int pageSize);
     }
 }

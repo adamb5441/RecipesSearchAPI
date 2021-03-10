@@ -39,7 +39,7 @@ namespace RecipesAPI.API.Recipes
         [HttpPost]
         public async Task<IActionResult> CreateRecipe([FromBody] RecipeRequest request)
         {
-            var command = new AddRecipeCommand(request.Name, request.Directions, request.Ingredients);
+            var command = new AddRecipeCommand(request.Name, request.Directions, request.Ingredients, request.Description, request.Yield);
             var response = await _mediator.Send(command);
             return Ok(response);
         }

@@ -16,7 +16,6 @@
     <Folder Include="Reviews\" />
     <Folder Include="Searches\MySearch\" />
     <Folder Include="Searches\Recomendations\" />
-    <Folder Include="Searches\SearchForMatch\" />
   </ItemGroup>
 
   <ItemGroup>

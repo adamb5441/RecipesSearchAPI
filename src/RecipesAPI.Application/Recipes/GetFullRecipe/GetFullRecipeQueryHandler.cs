@@ -27,7 +27,7 @@ namespace RecipesAPI.Application.Recipes.GetFullRecipe
                 .Select(i => new IngredientDto(i.Name, i.Quantity, i.Measurement))
                 .ToList();
 
-            var recipe = new RecipeDto(response.Id, response.Name, response.Directions, ingredients);
+            var recipe = new RecipeDto(response.Id, response.Name, response.Directions, ingredients, response.Description, response.Yield);
 
             return recipe;
         }

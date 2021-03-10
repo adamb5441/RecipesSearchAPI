@@ -13,6 +13,10 @@ namespace RecipesAPI.API.Recipes
 
         public string Directions { get; set; }
 
+        public string Description { get; set; }
+
+        public int Yield { get; set; }
+
         public List<IngredientDto> Ingredients { get; set; }
     }
 }
