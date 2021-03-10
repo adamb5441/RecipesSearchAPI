@@ -29,7 +29,7 @@ namespace RecipesAPI.API.Recipes
         }
 
         [HttpPut("Update/{id}")]
-        public async Task<IActionResult> UpdateRecipe(Guid id, [FromBody] CreateRecipeRequest request)
+        public async Task<IActionResult> UpdateRecipe(Guid id, [FromBody] RecipeRequest request)
         {
             var command = new ChangeRecipeCommand(id, request.Name, request.Directions, request.Ingredients);
             var response = await _mediator.Send(command);
@@ -37,7 +37,7 @@ namespace RecipesAPI.API.Recipes
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateRecipe([FromBody] CreateRecipeRequest request)
+        public async Task<IActionResult> CreateRecipe([FromBody] RecipeRequest request)
         {
             var command = new AddRecipeCommand(request.Name, request.Directions, request.Ingredients);
             var response = await _mediator.Send(command);
@@ -46,7 +46,7 @@ namespace RecipesAPI.API.Recipes
 
         //maybe?
         [HttpPost("Import")]
-        public async Task<IActionResult> ImportRecipes([FromBody] List<RecipeDto> Recipe)
+        public async Task<IActionResult> ImportRecipes([FromBody] List<RecipeRequest> Recipe)
         {
             return Ok();
         }

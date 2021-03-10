@@ -14,6 +14,10 @@ namespace RecipesAPI.Application.Recipes
 
         public string Directions { get; set; }
 
+        public string Description { get; set; }
+
+        public int Yield { get; set; }
+
         public List<IngredientDto> Ingredients { get; set; }
 
         public RecipeDto
@@ -21,13 +25,17 @@ namespace RecipesAPI.Application.Recipes
             Guid id,
             string name,
             string directions,
-            List<IngredientDto> ingredients
+            List<IngredientDto> ingredients,
+            string description,
+            int yield
         )
         {
             this.Id = id;
             this.Name = name;
             this.Directions = directions;
+            this.Description = description;
             this.Ingredients = ingredients;
+            this.Yield = yield;
         }
 
     }

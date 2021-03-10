@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RecipesAPI.API.Recipes
 {
-    public class CreateRecipeRequest
+    public class RecipeRequest
     {
         public string Name { get; set; }
 
