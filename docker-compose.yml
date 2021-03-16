@@ -3,6 +3,8 @@ version: '3.4'
 services:
   recipesapi.api:
     image: ${DOCKER_REGISTRY-}recipesapiapi
+    ports:
+      - "5000:5000"
     build:
       context: .
       dockerfile: src/RecipesAPI.API/Dockerfile
